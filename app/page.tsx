@@ -201,7 +201,11 @@ export default function Portfolio() {
         return "TACTICAL OPERATIONS CENTER"
     }
   }, [currentSection])
-
+  const [dateTime, setDateTime] = useState("")
+  useEffect(() => {
+    const now = new Date().toLocaleString()
+    setDateTime(now)
+  }, [])
   return (
         <div className="min-h-screen bg-black text-green-400 font-mono overflow-hidden flex flex-col">
       {/* Background Animations */}
@@ -213,7 +217,7 @@ export default function Portfolio() {
         <div className="flex items-center gap-2 sm:gap-4">
           <div className="text-green-400 font-bold text-xs sm:text-sm">TACTICAL@OPERATIVE</div>
           <div className="text-green-300 text-xs hidden sm:block">
-            {new Date().toLocaleString()} | CLEARANCE: ALPHA | INTERFACE: ACTIVE
+            {dateTime} | CLEARANCE: ALPHA | INTERFACE: ACTIVE
           </div>
           <div className="text-green-300 text-xs sm:hidden">ALPHA | ACTIVE</div>
         </div>

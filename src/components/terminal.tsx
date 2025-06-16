@@ -48,7 +48,7 @@ export default function Terminal({ history, onCommand }: TerminalProps) {
   }
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col ">
       <div ref={terminalRef} className="flex-1 p-4 overflow-y-auto text-sm leading-relaxed">
         {history.map((line, index) => (
           <div key={index} className="whitespace-pre-wrap">
