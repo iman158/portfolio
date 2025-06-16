@@ -2,13 +2,13 @@
 
 import { useState, useEffect, useCallback, useMemo } from "react"
 import { useRef } from 'react';
-import Crosshair from "@/components/Crosshair"
-import Terminal from "@/components/terminal"
-import AboutSection from "@/components/about-section"
-import ProjectsSection from "@/components/projects-section"
-import SkillsSection from "@/components/skills-section"
-import ContactSection from "@/components/contact-section"
-import BackgroundAnimations from "@/components/background-animations"
+import Crosshair from "@/src/components/Crosshair"
+import Terminal from "@/src/components/terminal"
+import AboutSection from "@/src/components/about-section"
+import ProjectsSection from "@/src/components/projects-section"
+import SkillsSection from "@/src/components/skills-section"
+import ContactSection from "@/src/components/contact-section"
+import BackgroundAnimations from "@/src/components/background-animations"
 
 export default function Portfolio() {
    

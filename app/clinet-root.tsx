@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import Crosshair from "@/components/Crosshair";
+import Crosshair from "@/src/components/Crosshair";
 
 export default function ClientRoot({
   children,
