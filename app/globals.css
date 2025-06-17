@@ -117,3 +117,76 @@ a {
 .font-mono {
   font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
 }
+
+
+/* In your src/app/globals.css or a dedicated CSS file */
+
+.terminal-input-reset {
+  /* Remove all default appearances */
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+
+  /* Remove all borders, backgrounds, and outlines */
+  border: none !important;
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important; /* Important for removing any subtle default shadows */
+
+  /* Ensure no padding or margin */
+  padding: 0 !important;
+  margin: 0 !important;
+
+  /* Remove default text selection highlight (optional, but good for terminal feel) */
+  caret-color: transparent !important; /* Hide native cursor */
+
+  /* Customize selection color if you want, otherwise it will be default */
+  &::selection {
+    background-color: theme('colors.green.700') !important; /* Tailwind's green-700 */
+    color: theme('colors.green.200') !important; /* Tailwind's green-200 */
+  }
+}
+
+/* Specific for number input spinners, if you ever change type to "number" */
+input[type="number"].terminal-input-reset::-webkit-inner-spin-button,
+input[type="number"].terminal-input-reset::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+input[type="number"].terminal-input-reset {
+  -moz-appearance: textfield !important;
+}
+
+/* For autofill background, which can be very stubborn */
+input.terminal-input-reset:-webkit-autofill,
+input.terminal-input-reset:-webkit-autofill:hover,
+input.terminal-input-reset:-webkit-autofill:focus,
+input.terminal-input-reset:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: #A7F3D0 !important; /* Your green-400 color */
+    transition: background-color 5000s ease-in-out 0s; /* Prevents visual flash */
+}
+
+
+/* In src/app/globals.css or a dedicated CSS file */
+
+@keyframes terminalBlink {
+  0% { opacity: 1; }
+  49% { opacity: 1; }
+  50% { opacity: 0; }
+  99% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.terminal-cursor-animated {
+  /* ... existing properties from .terminal-cursor (like display, color, etc.) ... */
+  display: inline-block !important;
+  vertical-align: middle !important;
+  visibility: visible !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  color: #A7F3D0 !important;
+  
+  /* Apply the animation */
+  animation: terminalBlink 1s infinite step-end !important; /* 1s total cycle, instant switch */
+}

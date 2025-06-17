@@ -22,7 +22,8 @@ Focus: Security Operations, Bypass and Reveerse Engineering
 PROFESSIONAL BACKGROUND:
 Cybersecurity enthusiast and electronics student focusing on offensive 
 development, reverse engineering, and electronic tech. Currently building 
-practical experience through various projects while pursuing undergraduate studies. Passionate about malware analysis and reverse engineering.
+practical experience through various projects while pursuing undergraduate 
+studies. Passionate about malware analysis and reverse engineering.
 
 CORE COMPETENCIES:
 • Offensive Security & Penetration Testing

@@ -10,6 +10,7 @@ import SkillsSection from "@/src/components/skills-section"
 import ContactSection from "@/src/components/contact-section"
 import BackgroundAnimations from "@/src/components/background-animations"
 
+
 export default function Portfolio() {
    
   const [currentSection, setCurrentSection] = useState("home")
@@ -222,6 +223,10 @@ export default function Portfolio() {
             {dateTime} | CLEARANCE: ALPHA | INTERFACE: ACTIVE
           </div>
           <div className="text-green-300 text-xs sm:hidden">ALPHA | ACTIVE</div>
+   <button className="bg-primary text-primary-foreground border border-solid border-green-300 px-2 rounded-lg text-sm font-medium cursor-pointer transition-colors duration-200 ease-in-out hover:bg-primary/90        
+   focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-background active:bg-primary/80">
+  Blog
+</button>
         </div>
         <div className="flex items-center gap-2 sm:gap-4">
           <div className="text-green-300 text-xs hidden md:block">SECTION: {currentSection.toUpperCase()}</div>

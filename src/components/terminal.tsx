@@ -15,12 +15,17 @@ export default function Terminal({ history, onCommand }: TerminalProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const terminalRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowCursor((prev) => !prev)
-    }, 500)
-    return () => clearInterval(interval)
-  }, [])
+useEffect(() => {
+  const interval = setInterval(() => {
+    setShowCursor((prev) => {
+      const newShowCursor = !prev; // Calculate the new value
+      console.log("toggling cursor to:", newShowCursor); // Log the new value
+      return newShowCursor; // Return the new value to update state
+    });
+  }, 500);
+  return () => clearInterval(interval);
+}, []);
+  
 
   useEffect(() => {
     if (terminalRef.current) {
@@ -60,18 +65,18 @@ export default function Terminal({ history, onCommand }: TerminalProps) {
       <form onSubmit={handleSubmit} className="p-4 border-t border-green-400">
         <div className="flex items-center">
           <span className="text-green-400 mr-2">TACTICAL@operative:~$</span>
-          <input
-            ref={inputRef}
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent text-green-400 outline-none"
-            autoFocus
-          />
-          <span className={`ml-1 ${showCursor ? "opacity-100" : "opacity-0"} transition-opacity`}>█</span>
+        <input
+  ref={inputRef}
+  type="text"
+  value={input}
+  onChange={(e) => setInput(e.target.value)}
+  onKeyDown={handleKeyDown}
+  className="flex-1 text-green-400 terminal-input-reset"
+  autoFocus
+/>
+         <span className="ml-1 terminal-cursor-animated">█</span> {/* Use the animated class directly */}
         </div>
       </form>
-    </div>
+    </div> 
   )
 }

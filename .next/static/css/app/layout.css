@@ -504,14 +504,14 @@ video {
 .inset-0 {
   inset: 0px;
 }
+.z-0 {
+  z-index: 0;
+}
 .z-10 {
   z-index: 10;
 }
 .z-20 {
   z-index: 20;
-}
-.z-0 {
-  z-index: 0;
 }
 .col-span-3 {
   grid-column: span 3 / span 3;
@@ -615,6 +615,9 @@ video {
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
 .resize {
   resize: both;
 }
@@ -673,15 +676,31 @@ video {
 .rounded-full {
   border-radius: 9999px;
 }
+.rounded-md {
+  border-radius: calc(var(--radius) - 2px);
+}
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+.rounded-lg {
+  border-radius: var(--radius);
+}
 .border {
   border-width: 1px;
 }
 .border-b {
   border-bottom-width: 1px;
 }
+.border-solid {
+  border-style: solid;
+}
 .border-green-400 {
   --tw-border-opacity: 1;
   border-color: rgb(74 222 128 / var(--tw-border-opacity, 1));
+}
+.border-green-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(134 239 172 / var(--tw-border-opacity, 1));
 }
 .bg-black {
   --tw-bg-opacity: 1;
@@ -713,6 +732,9 @@ video {
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity, 1));
+}
+.bg-primary {
+  background-color: hsl(var(--primary));
 }
 .bg-opacity-80 {
   --tw-bg-opacity: 0.8;
@@ -781,6 +803,9 @@ video {
 .font-bold {
   font-weight: 700;
 }
+.font-medium {
+  font-weight: 500;
+}
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
@@ -792,6 +817,9 @@ video {
 .text-green-400 {
   --tw-text-opacity: 1;
   color: rgb(74 222 128 / var(--tw-text-opacity, 1));
+}
+.text-primary-foreground {
+  color: hsl(var(--primary-foreground));
 }
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -825,6 +853,9 @@ video {
 .duration-300 {
   transition-duration: 300ms;
 }
+.duration-200 {
+  transition-duration: 200ms;
+}
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -844,6 +875,9 @@ video {
 }
 .duration-300 {
   animation-duration: 300ms;
+}
+.duration-200 {
+  animation-duration: 200ms;
 }
 .ease-in-out {
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -964,23 +998,133 @@ a {
 .font-mono {
   font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
 }
+
+
+/* In your src/app/globals.css or a dedicated CSS file */
+
+.terminal-input-reset {
+  /* Remove all default appearances */
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+
+  /* Remove all borders, backgrounds, and outlines */
+  border: none !important;
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important; /* Important for removing any subtle default shadows */
+
+  /* Ensure no padding or margin */
+  padding: 0 !important;
+  margin: 0 !important;
+
+  /* Remove default text selection highlight (optional, but good for terminal feel) */
+  caret-color: transparent !important; /* Hide native cursor */
+
+  /* Customize selection color if you want, otherwise it will be default */
+  &::selection {
+    background-color: #15803d !important; /* Tailwind's green-700 */
+    color: #bbf7d0 !important; /* Tailwind's green-200 */
+  }
+}
+
+/* Specific for number input spinners, if you ever change type to "number" */
+input[type="number"].terminal-input-reset::-webkit-inner-spin-button,
+input[type="number"].terminal-input-reset::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+input[type="number"].terminal-input-reset {
+  -moz-appearance: textfield !important;
+}
+
+/* For autofill background, which can be very stubborn */
+input.terminal-input-reset:-webkit-autofill,
+input.terminal-input-reset:-webkit-autofill:hover,
+input.terminal-input-reset:-webkit-autofill:focus,
+input.terminal-input-reset:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: #A7F3D0 !important; /* Your green-400 color */
+    transition: background-color 5000s ease-in-out 0s; /* Prevents visual flash */
+}
+
+
+/* In src/app/globals.css or a dedicated CSS file */
+
+@keyframes terminalBlink {
+  0% { opacity: 1; }
+  49% { opacity: 1; }
+  50% { opacity: 0; }
+  99% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.terminal-cursor-animated {
+  /* ... existing properties from .terminal-cursor (like display, color, etc.) ... */
+  display: inline-block !important;
+  vertical-align: middle !important;
+  visibility: visible !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  color: #A7F3D0 !important;
+  
+  /* Apply the animation */
+  animation: terminalBlink 1s infinite step-end !important; /* 1s total cycle, instant switch */
+}
+
 .hover\:bg-green-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(74 222 128 / var(--tw-bg-opacity, 1));
 }
+
+.hover\:bg-primary\/90:hover {
+  background-color: hsl(var(--primary) / 0.9);
+}
+
 .hover\:text-black:hover {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
+
 .hover\:shadow-lg:hover {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
+
 .hover\:shadow-green-400\/50:hover {
   --tw-shadow-color: rgb(74 222 128 / 0.5);
   --tw-shadow: var(--tw-shadow-colored);
 }
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus\:ring-2:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.focus\:ring-green-500:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(34 197 94 / var(--tw-ring-opacity, 1));
+}
+
+.focus\:ring-offset-2:focus {
+  --tw-ring-offset-width: 2px;
+}
+
+.focus\:ring-offset-background:focus {
+  --tw-ring-offset-color: hsl(var(--background));
+}
+
+.active\:bg-primary\/80:active {
+  background-color: hsl(var(--primary) / 0.8);
+}
+
 @media (min-width: 640px) {
 
   .sm\:block {
@@ -1033,10 +1177,10 @@ a {
     line-height: 1.25rem;
   }
 }
+
 @media (min-width: 768px) {
 
   .md\:block {
     display: block;
   }
 }
-
