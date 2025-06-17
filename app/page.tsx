@@ -209,7 +209,9 @@ export default function Portfolio() {
   return (
         <div className="min-h-screen bg-black text-green-400 font-mono overflow-hidden flex flex-col">
       {/* Background Animations */}
-      <BackgroundAnimations />   
+       <div className="absolute inset-0 z-0"> {/* New wrapper div */}
+      <BackgroundAnimations />
+    </div>  
       
 
       {/* Header Bar - Responsive */}
