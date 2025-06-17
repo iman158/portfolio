@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState, useEffect, useCallback, useMemo } from "react"
@@ -223,7 +224,7 @@ export default function Portfolio() {
             {dateTime} | CLEARANCE: ALPHA | INTERFACE: ACTIVE
           </div>
           <div className="text-green-300 text-xs sm:hidden">ALPHA | ACTIVE</div>
-   <button className="bg-primary text-primary-foreground border border-solid border-green-300 px-2 rounded-lg text-sm font-medium cursor-pointer transition-colors duration-200 ease-in-out hover:bg-primary/90        
+   <button className="bg-primary text-primary-foreground border border-solid border-green-300 px-4 rounded-xl text-sm font-medium cursor-pointer transition-colors duration-200 ease-in-out hover:bg-primary/90        
    focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-background active:bg-primary/80">
   Blog
 </button>

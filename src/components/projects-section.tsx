@@ -1,3 +1,5 @@
+
+
 "use client"
 
 import { useState } from "react"
@@ -81,21 +83,28 @@ export default function ProjectsSection({ onCommand }: ProjectsSectionProps) {
         {projects.map((project) => (
           <div
             key={project.id}
-            className={`border border-green-400 rounded p-3 cursor-pointer transition-all duration-300 ${
+            // Add 'group' class here to make group-hover work on children
+            className={`group border border-green-400 rounded p-3 cursor-pointer transition-all duration-300 ${
               selectedProject === project.id ? "bg-green-400 bg-opacity-10" : "hover:bg-green-400 hover:bg-opacity-5"
             }`}
             onClick={() => setSelectedProject(selectedProject === project.id ? null : project.id)}
           >
             <div className="flex justify-between items-start mb-2">
-              <h3 className="text-green-400 font-bold text-sm">{project.name}</h3>
+              <h3
+                className={`font-bold text-sm ${
+                  selectedProject === project.id ? "text-black" : "text-green-300 group-hover:text-black"
+                }`}
+              >
+                {project.name}
+              </h3>
               <div className="flex gap-2">
                 <span
                   className={`text-xs px-2 py-1 rounded ${
                     project.status === "COMPLETED"
                       ? "bg-green-600"
                       : project.status === "OPERATIONAL"
-                        ? "bg-yellow-600"
-                        : "bg-blue-600"
+                      ? "bg-yellow-600"
+                      : "bg-blue-600"
                   } text-black`}
                 >
                   {project.status}
@@ -105,8 +114,8 @@ export default function ProjectsSection({ onCommand }: ProjectsSectionProps) {
                     project.priority === "CRITICAL"
                       ? "bg-red-600"
                       : project.priority === "HIGH"
-                        ? "bg-orange-600"
-                        : "bg-yellow-600"
+                      ? "bg-orange-600"
+                      : "bg-yellow-600"
                   } text-black`}
                 >
                   {project.priority}
@@ -114,10 +123,18 @@ export default function ProjectsSection({ onCommand }: ProjectsSectionProps) {
               </div>
             </div>
 
-            <p className="text-green-300 text-xs mb-2">{project.type}</p>
+            {/* This text should also change color on hover/click */}
+            <p
+              className={`text-xs mb-2 ${
+                selectedProject === project.id ? "text-black" : "text-green-300 group-hover:text-black"
+              }`}
+            >
+              {project.type}
+            </p>
 
             {selectedProject === project.id && (
               <div className="mt-3 space-y-2 border-t border-green-400 pt-3">
+                {/* Description text color when expanded */}
                 <p className="text-green-300 text-xs">{project.description}</p>
 
                 <div>

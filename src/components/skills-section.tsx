@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useEffect, useState } from "react"
@@ -260,7 +261,8 @@ export default function SkillsSection({ onCommand }: SkillsSectionProps) {
             {skills.map((skill, index) => (
               <div
                 key={index}
-                className={`border border-green-400 rounded p-3 cursor-pointer transition-all duration-300 ${
+                // Add 'group' class here
+                className={`group border border-green-400 rounded p-3 cursor-pointer transition-all duration-300 ${
                   selectedSkill === index
                     ? "bg-green-400 bg-opacity-10 border-green-300"
                     : "hover:bg-green-400 hover:bg-opacity-5"
@@ -270,10 +272,24 @@ export default function SkillsSection({ onCommand }: SkillsSectionProps) {
                 <div className="flex justify-between items-start mb-2">
                   <div className="flex items-center gap-2">
                     <span className="text-lg">{skill.icon}</span>
-                    <h4 className="text-green-400 font-bold text-sm">{skill.category}</h4>
+                    {/* Apply hover/click effect to h4 */}
+                    <h4
+                      className={`font-bold text-sm ${
+                        selectedSkill === index ? "text-black" : "text-green-300 group-hover:text-black"
+                      }`}
+                    >
+                      {skill.category}
+                    </h4>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-green-300 text-xs">{skill.level}%</span>
+                    {/* Level text also changes */}
+                    <span
+                      className={`text-xs ${
+                        selectedSkill === index ? "text-black" : "text-green-300 group-hover:text-black"
+                      }`}
+                    >
+                      {skill.level}%
+                    </span>
                     <div className="w-16 bg-gray-800 rounded-full h-2 border border-green-400">
                       <div
                         className="bg-green-400 h-full rounded-full transition-all duration-1000"
@@ -285,10 +301,21 @@ export default function SkillsSection({ onCommand }: SkillsSectionProps) {
 
                 {selectedSkill === index && (
                   <div className="mt-3 space-y-2 border-t border-green-400 pt-3">
-                    <p className="text-green-300 text-xs">{skill.description}</p>
+                    {/* Description text is always green-300 if not selected, and black if selected */}
+                    <p
+                      className={`text-xs ${selectedSkill === index ? "text-black" : "text-green-300"}`}
+                    >
+                      {skill.description}
+                    </p>
 
                     <div>
-                      <h5 className="text-green-400 font-bold text-xs mb-1">{"TOOLS & TECHNOLOGIES:"}</h5>
+                      <h5
+                        className={`font-bold text-xs mb-1 ${
+                          selectedSkill === index ? "text-black" : "text-green-400"
+                        }`}
+                      >
+                        {"TOOLS & TECHNOLOGIES:"}
+                      </h5>
                       <div className="flex flex-wrap gap-1">
                         {skill.tools.map((tool, toolIndex) => (
                           <span
@@ -317,7 +344,8 @@ export default function SkillsSection({ onCommand }: SkillsSectionProps) {
             {certifications.map((cert, index) => (
               <div
                 key={index}
-                className={`border border-green-400 rounded p-3 cursor-pointer transition-all duration-300 ${
+                // Add 'group' class here
+                className={`group border border-green-400 rounded p-3 cursor-pointer transition-all duration-300 ${
                   selectedCert === index
                     ? "bg-green-400 bg-opacity-10 border-green-300"
                     : "hover:bg-green-400 hover:bg-opacity-5"
@@ -325,19 +353,41 @@ export default function SkillsSection({ onCommand }: SkillsSectionProps) {
                 onClick={() => setSelectedCert(selectedCert === index ? null : index)}
               >
                 <div className="flex justify-between items-start mb-2">
-                  <h4 className="text-green-400 font-bold text-sm flex-1">{cert.name}</h4>
+                  {/* Apply hover/click effect to h4 */}
+                  <h4
+                    className={`font-bold text-sm flex-1 ${
+                      selectedCert === index ? "text-black" : "text-green-300 group-hover:text-black"
+                    }`}
+                  >
+                    {cert.name}
+                  </h4>
                   <span className={`text-xs px-2 py-1 rounded text-black ${getStatusColor(cert.status).split(" ")[1]}`}>
                     {getStatusText(cert.status)}
                   </span>
                 </div>
 
-                <div className="text-green-300 text-xs mb-2">{"Provider: " + cert.provider}</div>
+                {/* Apply hover/click effect to provider text */}
+                <div
+                  className={`text-xs mb-2 ${
+                    selectedCert === index ? "text-black" : "text-green-300 group-hover:text-black"
+                  }`}
+                >
+                  {"Provider: " + cert.provider}
+                </div>
 
                 {cert.progress && (
                   <div className="mb-2">
                     <div className="flex justify-between text-xs mb-1">
-                      <span className="text-green-300">Progress</span>
-                      <span className="text-green-400">{cert.progress}%</span>
+                      <span
+                        className={`${selectedCert === index ? "text-black" : "text-green-300"}`}
+                      >
+                        Progress
+                      </span>
+                      <span
+                        className={`${selectedCert === index ? "text-black" : "text-green-400"}`}
+                      >
+                        {cert.progress}%
+                      </span>
                     </div>
                     <div className="w-full bg-gray-800 rounded-full h-2 border border-green-400">
                       <div
